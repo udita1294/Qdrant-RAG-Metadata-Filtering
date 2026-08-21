@@ -146,7 +146,15 @@ def search_with_filter(query, query_filter=None, top_k=3):
     ).points
     return results
 
-
+# created filter for category "reimbursement"
+reimbursement_filter = Filter(
+    must=[
+        FieldCondition(
+            key="category",
+            match=MatchValue(value="reimbursement")
+        )
+    ]
+)
 
 # ============================================================
 # PART 9 — TEST SEARCH
