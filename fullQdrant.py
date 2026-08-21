@@ -54,6 +54,11 @@ client.create_collection(
 print(f"Created collection: {COLLECTION_NAME}")
 print(f"Vector size: {EMBEDDING_SIZE}")
 print("Distance: COSINE")
+
+# ============================================================
+# PART 4 — CREATE PAYLOAD INDEX
+# ============================================================
+
 client.create_payload_index(
     collection_name=COLLECTION_NAME,
     field_name="category",
