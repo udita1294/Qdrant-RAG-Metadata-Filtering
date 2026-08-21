@@ -157,12 +157,12 @@ reimbursement_filter = Filter(
 )
 
 # ============================================================
-# PART 9 — TEST SEARCH
+# PART 10 — TEST SEARCH
 # ============================================================
 
 query = "How many vacation days do I get?"
 
-results = search(query, top_k=3)
+results = search_with_filter(query,reimbursement_filter, top_k=3)
 
 print("\nSearch results:")
 for result in results:
@@ -171,13 +171,13 @@ for result in results:
     print()
 
 # ============================================================
-# PART 10 — CONNECT TO GROQ
+# PART 11 — CONNECT TO GROQ
 # ============================================================
 
 groq_client = Groq(api_key=GROQ_API_KEY)
 
 # ============================================================
-# PART 11 — ASK THE LLM
+# PART 12 — ASK THE LLM
 # ============================================================
 
 def ask_llm(question, context):
@@ -196,7 +196,7 @@ If the answer is not present in the context, say:
 """
 
     response = groq_client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         messages=[
             {
                 "role": "user",
@@ -209,7 +209,7 @@ If the answer is not present in the context, say:
 
 
 # ============================================================
-# PART 12 — COMPLETE RAG PIPELINE
+# PART 13 — COMPLETE RAG PIPELINE
 # ============================================================
 
 question = "How many vacation days do I get?"
