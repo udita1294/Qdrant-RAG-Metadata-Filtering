@@ -67,18 +67,11 @@ client.create_payload_index(
 
 
 # ============================================================
-# PART 4 — LOAD OUR KNOWLEDGE
+# PART 5 — LOAD OUR KNOWLEDGE
 # ============================================================
 
-with open("knowledge.txt", "r", encoding="utf-8") as f:
-    documents = [
-        line.strip()
-        for line in f
-        if line.strip()
-    ]
-# ["line 1 ", "line2", "line3"....]
-print(f"Loaded {len(documents)} documents")
-
+with open("knowledge.json", "r", encoding="utf-8") as f:
+    documents = json.load(f)
 
 # ============================================================
 # PART 5 — CREATE EMBEDDINGS
