@@ -106,7 +106,7 @@ for i in range(len(documents)):
 
 
 # ============================================================
-# PART 7 — UPLOAD TO QDRANT
+# PART 8 — UPLOAD TO QDRANT
 # ============================================================
 
 client.upsert( #upload+insert
@@ -117,7 +117,7 @@ print(f"Uploaded {len(points)} documents to Qdrant!")
 
 
 # ============================================================
-# PART 8 — SEARCH QDRANT
+# PART 9 — SEARCH QDRANT
 # ============================================================
 
 def search(query, top_k=3):
@@ -134,6 +134,19 @@ def search(query, top_k=3):
     ).points
 
     return results
+
+def search_with_filter(query, query_filter=None, top_k=3):
+    query_vector = model.encode(query).tolist()
+    results = client.query_points(
+        collection_name=COLLECTION_NAME,
+        query=query_vector,
+        limit=top_k,
+        with_payload=True,
+        query_filter=query_filter
+    ).points
+    return results
+
+
 
 # ============================================================
 # PART 9 — TEST SEARCH
