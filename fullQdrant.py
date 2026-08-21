@@ -89,19 +89,17 @@ print(f"Embedding size: {len(embeddings[0])}")
 
 
 # ============================================================
-# PART 6 — CREATE QDRANT POINTS
+# PART 7 — CREATE QDRANT POINTS
 # ============================================================
 
 points = []
 
-for i, embedding in enumerate(embeddings):
+for i in range(len(documents)):
 
     point = PointStruct(
-        id=i + 1, #id=1
-        vector=embedding.tolist(),
-        payload={
-            "text": documents[i]
-        }
+        id = i + 1, #id=1
+        vector = embeddings[i].tolist(),
+        payload= documents[i]
     )
 
     points.append(point)
