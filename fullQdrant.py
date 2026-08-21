@@ -74,14 +74,15 @@ with open("knowledge.json", "r", encoding="utf-8") as f:
     documents = json.load(f)
 
 # ============================================================
-# PART 5 — CREATE EMBEDDINGS
+# PART 6 — CREATE EMBEDDINGS
 # ============================================================
 
 print("Loading embedding model...")
 model = SentenceTransformer("all-MiniLM-L6-v2") #384
 print("Embedding model ready!")
+texts = [document["text"] for document in documents]
 
-embeddings = model.encode(documents)
+embeddings = model.encode(texts)
 
 print(f"Generated {len(embeddings)} embeddings")
 print(f"Embedding size: {len(embeddings[0])}")
